@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    color: black !important;
+}
+img {
+    width: 100%;
+}
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(136, 135, 135, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 40px;
+}
+
+.header .search {
+    padding: 5px 60px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.header .js-choice {
+    padding: 5px 60px;
+    border-radius: 15px;
+}
+
+.js-choice option {
+    font-size: 20px;
+    color: #333;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.btn {
+    padding: 5px 10px;
+    background-color: transparent;
+    border-radius: 5px;
+
+    transition: all 1s ease;
+}
+.btn:hover {
+    background-color: orange;
+    color: red;
+}
+
+.news {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 23px;
+}
+
+.child {
+    display: flex;
+    flex-direction: column;
+    grid-column: 3 span;
+}
+
+.child .desc {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.child .text {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.date {
+    margin-top: auto;
+}
