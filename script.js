@@ -36,7 +36,7 @@ function displayNews(news) {
                     ${image}
                     <h2>${article.title}</h2>
                 </a>
-                <p class='text'>${article.description}</p>
+                <p class='text'>${article.description || "Неизвестно "}</p>
                 <p>Автор: ${article.author || "Неизвестно"}</p>
                 <p class='date'>Дата публикации: ${date}</p>
             `;
@@ -63,7 +63,7 @@ function displayNewsHead(news) {
         ${image}
             <h2>${article.title}</h2>
         </a>
-        <p class='text'>${article.description}</p>
+        <p class='text'>${article.description || "Неизвестно "}</p>
         <p>Автор: ${article.author || "Неизвестно"}</p>
         <p class='date'>Дата публикации: ${date}</p>
         
@@ -116,7 +116,7 @@ form.addEventListener("submit", async (e) => {
 
     const headlines = await loadNews(headlinesUrl);
 
-    const headNews = headlines.slice(0, 4);
+    const headNews = headlines.slice(0, 8);
     // Отображаем результаты
     displayNewsHead([...headNews]);
 })();
