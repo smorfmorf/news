@@ -2,12 +2,13 @@ const form = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const newsContainer = document.getElementById("news-container");
 const newsContainer2 = document.getElementById("news");
+const select = document.querySelector(".js-choice");
 
 // Функция для загрузки новостей по заданному URL
 async function loadNews(url) {
     try {
         const response = await fetch(url, {
-            headers: { "X-Api-Key": "d747d5b0259e4b00adc17c247dbea91b" },
+            headers: { "X-Api-Key": "8bf6e7ac5204471e82a26814d84de14e" },
         });
 
         const data = await response.json();
@@ -71,6 +72,15 @@ function displayNewsHead(news) {
     });
 }
 
+select.addEventListener("change", async () => {
+    const tagCountry = select.value;
+    const headlinesUrl = `https://newsapi.org/v2/top-headlines?country=${tagCountry}`;
+
+    const headlines = await loadNews(headlinesUrl);
+    const headNews = headlines.slice(0, 4);
+    displayNewsHead([...headNews]);
+});
+
 // Обработчик события отправки формы
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -100,3 +110,13 @@ form.addEventListener("submit", async (e) => {
         console.error("Ошибка при загрузке новостей:", error);
     }
 });
+
+(async function () {
+    const headlinesUrl = `https://newsapi.org/v2/top-headlines?country=ru`;
+
+    const headlines = await loadNews(headlinesUrl);
+
+    const headNews = headlines.slice(0, 4);
+    // Отображаем результаты
+    displayNewsHead([...headNews]);
+})();
